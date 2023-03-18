@@ -1,6 +1,7 @@
 <template>
     <div>Sign In</div>
     <input type="tel" v-model="phoneNumber" />
+    <Button @click="challengePhone">Challenge phone</Button>
     <Button @click="showPopupScanQr">Show Scan Qr Popup</Button>
     <div>Link Scaned: {{ qrEvent }}</div>
 </template>
@@ -35,12 +36,6 @@ export default {
             });
         },
         challengePhone() {
-            this.tg.showPopup({
-                title: "Phone verification",
-                message: "Enter verification code",
-                buttons: [{ type: "close" }, { type: "ok" }],
-            });
-
             api()
                 .auth.challenge({
                     phone_number: this.phoneNumber,
@@ -48,11 +43,12 @@ export default {
                 .then((res) => {
                     if (res.status == "ok" && res.token) {
                         this.otp_token = res.token;
-                        // this.tg.showPopup({
-                        //     title: "Phone verification",
-                        //     message: "Enter verification code",
-                        //     buttons: [{ type: "close" }, { type: "ok" }],
-                        // });
+                        console.log(res);
+                        this.tg.showPopup({
+                            title: "Phone verification",
+                            message: "Enter verification code",
+                            buttons: [{ type: "close" }, { type: "ok" }],
+                        });
                     }
                 });
         },
