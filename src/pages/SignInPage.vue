@@ -47,7 +47,7 @@ export default {
             this.tg.closeScanQrPopup();
             this.qrEvent = event;
         });
-        this.tg.MainButton.onClick((e) => )
+        this.tg.MainButton.onClick((e) => (this.getCodeEvent = e));
     },
 };
 </script>
