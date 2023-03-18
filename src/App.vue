@@ -1,5 +1,8 @@
 <template>
-    <div><Button @click="onClose">Close</Button></div>
+    <div>
+        <Button @click="onClose">Close</Button>
+        <Button @click="onToggle">Toggle</Button>
+    </div>
 </template>
 
 <script>
@@ -10,11 +13,28 @@ export default {
     data() {
         return {
             tg: window.Telegram.WebApp,
+            isVisibleMainBtn: this.tg.MainButton.isVisible,
         };
     },
     methods: {
         onClose() {
             this.tg.close();
+        },
+        onToggle() {
+            if (isVisibleMainBtn) {
+                this.tg.MainButton.hide();
+            } else {
+                this.tg.MainButton.show();
+            }
+        },
+    },
+    watch: {
+        isVisibleMainBtn(val) {
+            if (val) {
+                this.tg.MainButton.hide();
+            } else {
+                this.tg.MainButton.show();
+            }
         },
     },
     created() {
@@ -22,10 +42,10 @@ export default {
     },
     mounted() {
         this.tg.ready();
-        this.tg.MainButton.show();
         this.tg.MainButton.setParams({
             text: "Sign In",
         });
+        this.tg.MainButton.show();
     },
 };
 </script>
