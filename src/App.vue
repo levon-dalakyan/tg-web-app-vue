@@ -21,7 +21,7 @@ export default {
             this.tg?.close();
         },
         onToggle() {
-            if (isVisibleMainBtn) {
+            if (this.isVisibleMainBtn) {
                 this.tg?.MainButton.hide();
             } else {
                 this.tg?.MainButton.show();
