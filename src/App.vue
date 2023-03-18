@@ -12,28 +12,28 @@ export default {
     components: { Button },
     data() {
         return {
-            isVisibleMainBtn: tg.MainButton.isVisible,
+            isVisibleMainBtn: this.tg.MainButton.isVisible,
         };
     },
     methods: {
         onClose() {
-            tg.close();
+            this.tg.close();
         },
         onToggle() {
             if (this.isVisibleMainBtn) {
-                tg.MainButton.hide();
+                this.tg.MainButton.hide();
             } else {
-                tg.MainButton.show();
+                this.tg.MainButton.show();
             }
         },
     },
     watch: {},
     created() {
-        console.log(tg);
+        console.log(this.tg);
     },
     mounted() {
-        tg.ready();
-        tg.MainButton.setParams({
+        this.tg.ready();
+        this.tg.MainButton.setParams({
             text: "Sign In",
         });
     },
