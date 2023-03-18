@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import api from "../api";
+
 import Button from "../components/Button.vue";
 import BaseInput from "../components/BaseInput.vue";
 
@@ -63,7 +65,7 @@ export default {
             this.tg.closeScanQrPopup();
             this.qrEvent = event;
         });
-        this.tg.MainButton.onClick(challengePhone);
+        this.tg.MainButton.onClick(this.challengePhone);
     },
 };
 </script>
