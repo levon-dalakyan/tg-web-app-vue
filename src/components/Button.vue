@@ -11,9 +11,6 @@ export default {};
 <style lang="scss">
 .button {
     padding: 10px 15px;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
     background: var(--tg-theme-button-color);
     color: var(--tg-theme-button-text-color);
     border: none;
