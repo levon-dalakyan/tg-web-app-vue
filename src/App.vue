@@ -22,10 +22,9 @@ export default {
     },
     mounted() {
         this.tg.ready();
+        this.tg.MainButton.show();
         this.tg.MainButton.setParams({
             text: "Sign In",
-            is_active: true,
-            is_visible: true,
         });
     },
 };
