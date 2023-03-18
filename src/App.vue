@@ -13,27 +13,27 @@ export default {
     data() {
         return {
             tg: window.Telegram.WebApp,
-            isVisibleMainBtn: this.tg.MainButton.isVisible,
+            isVisibleMainBtn: this.tg?.MainButton.isVisible,
         };
     },
     methods: {
         onClose() {
-            this.tg.close();
+            this.tg?.close();
         },
         onToggle() {
             if (isVisibleMainBtn) {
-                this.tg.MainButton.hide();
+                this.tg?.MainButton.hide();
             } else {
-                this.tg.MainButton.show();
+                this.tg?.MainButton.show();
             }
         },
     },
     watch: {
         isVisibleMainBtn(val) {
             if (val) {
-                this.tg.MainButton.hide();
+                this.tg?.MainButton.hide();
             } else {
-                this.tg.MainButton.show();
+                this.tg?.MainButton.show();
             }
         },
     },
@@ -41,11 +41,11 @@ export default {
         console.log(this.tg);
     },
     mounted() {
-        this.tg.ready();
-        this.tg.MainButton.setParams({
+        this.tg?.ready();
+        this.tg?.MainButton.setParams({
             text: "Sign In",
         });
-        this.tg.MainButton.show();
+        this.tg?.MainButton.show();
     },
 };
 </script>
