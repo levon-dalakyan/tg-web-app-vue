@@ -25,7 +25,7 @@ export default {
         this.tg.ready();
         this.tg.MainButton.setParams({
             text: "Sign In",
-            // is_visible: true,
+            is_visible: true,
         });
     },
 };
