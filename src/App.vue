@@ -1,7 +1,6 @@
 <template>
     <div>
         <Button @click="onClose">Close</Button>
-        <Button @click="onToggle">Toggle</Button>
     </div>
 </template>
 
@@ -17,13 +16,6 @@ export default {
         onClose() {
             this.tg.close();
         },
-        onToggle() {
-            if (this.tg.MainButton.isVisible) {
-                this.tg.MainButton.hide();
-            } else {
-                this.tg.MainButton.show();
-            }
-        },
     },
     watch: {},
     created() {
@@ -33,22 +25,10 @@ export default {
         this.tg.ready();
         this.tg.MainButton.setParams({
             text: "Sign In",
+            // is_visible: true,
         });
     },
 };
 </script>
 
-<style scoped>
-.logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-}
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-    filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style scoped></style>
