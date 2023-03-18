@@ -3,7 +3,6 @@
     <input type="tel" v-model="phoneNumber" />
     <Button @click="showPopupScanQr">Show Scan Qr Popup</Button>
     <div>Link Scaned: {{ qrEvent }}</div>
-    <div>Get code event: {{ getCodeEvent }}</div>
 </template>
 
 <script>
@@ -24,6 +23,7 @@ export default {
             phoneNumber: "",
             disabledInputPhone: false,
             getCodeEvent: "",
+            otp_token: "",
         };
     },
     methods: {
@@ -31,6 +31,22 @@ export default {
             this.tg.showScanQrPopup({
                 text: "Any text can be displayed here :)",
             });
+        },
+        challengePhone() {
+            api()
+                .auth.challenge({
+                    phone_number: this.phoneNumber,
+                })
+                .then((res) => {
+                    if (res.status == "ok" && res.token) {
+                        this.otp_token = res.token;
+                        this.tg.showPopup({
+                            title: "Phone verification",
+                            message: "Enter verification code",
+                            buttons: [{ type: "close" }, { type: "ok" }],
+                        });
+                    }
+                });
         },
     },
     watch: {
@@ -47,7 +63,7 @@ export default {
             this.tg.closeScanQrPopup();
             this.qrEvent = event;
         });
-        this.tg.MainButton.onClick((e) => (this.getCodeEvent = e));
+        this.tg.MainButton.onClick(challengePhone);
     },
 };
 </script>
