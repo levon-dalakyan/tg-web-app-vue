@@ -24,8 +24,6 @@ export default {
         this.tg.ready();
         this.tg.MainButton.setParams({
             text: "Sign In",
-            color: "#7000ff",
-            text_color: "#fff",
             is_active: true,
             is_visible: true,
         });
