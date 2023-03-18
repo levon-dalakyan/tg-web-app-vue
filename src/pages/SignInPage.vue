@@ -36,24 +36,19 @@ export default {
             });
         },
         challengePhone() {
-            this.tg.showPopup({
-                title: "Phone verification",
-                message: "Enter verification code",
-                buttons: [{ type: "close" }, { type: "ok" }],
-            });
             api()
                 .auth.challenge({
                     phone_number: this.phoneNumber,
                 })
                 .then((res) => {
                     if (res.status == "ok" && res.token) {
+                        this.tg.showPopup({
+                            title: "Phone verification",
+                            message: "Enter verification code",
+                            buttons: [{ type: "close" }, { type: "ok" }],
+                        });
                         this.otp_token = res.token;
                         console.log(res);
-                        // this.tg.showPopup({
-                        //     title: "Phone verification",
-                        //     message: "Enter verification code",
-                        //     buttons: [{ type: "close" }, { type: "ok" }],
-                        // });
                     }
                 });
         },
