@@ -23,7 +23,7 @@ export default {
     },
     methods: {
         onClose() {
-            this.tg?.close();
+            tg.close();
         },
         onToggle() {
             if (isVisibleMainBtn) {
@@ -43,7 +43,7 @@ export default {
         },
     },
     created() {
-        console.log(this.tg);
+        console.log(tg);
     },
     mounted() {
         tg.ready();
