@@ -1,17 +1,9 @@
 <template>
     <div>Sign In</div>
-    <base-input
-        class-name="style-02 size-16 phone-input"
-        id="sign-in-tel"
-        v-model="phoneNumber"
-        input-type="tel"
-        placeholder="Phone number"
-        symbol="+"
-        :disabled="disabledInputPhone"
-    ></base-input>
+    <input type="tel" v-model="phoneNumber" />
     <Button @click="showPopupScanQr">Show Scan Qr Popup</Button>
     <div>Link Scaned: {{ qrEvent }}</div>
-    <div>Phone: {{ phoneNumber }}</div>
+    <div>Get code event: {{ getCodeEvent }}</div>
 </template>
 
 <script>
@@ -31,6 +23,7 @@ export default {
             // sign-in
             phoneNumber: "",
             disabledInputPhone: false,
+            getCodeEvent: "",
         };
     },
     methods: {
@@ -40,12 +33,21 @@ export default {
             });
         },
     },
+    watch: {
+        phoneNumber(val) {
+            if (val) {
+                this.tg.MainButton.setParams({ text: "Get code" });
+                this.tg.MainButton.show();
+            }
+        },
+    },
     mounted() {
         this.tg.MainButton.hide();
         this.tg.onEvent("qrTextReceived", (event) => {
             this.tg.closeScanQrPopup();
             this.qrEvent = event;
         });
+        this.tg.MainButton.onClick((e) => )
     },
 };
 </script>
