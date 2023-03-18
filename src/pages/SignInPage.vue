@@ -3,6 +3,7 @@
     <input type="text" />
     <input type="text" />
     <Button @click="showPopupScanQr">Show Scan Qr Popup</Button>
+    {{ qrEvent }}
 </template>
 
 <script>
@@ -12,6 +13,11 @@ export default {
     name: "SignInPage",
     components: {
         Button,
+    },
+    data() {
+        return {
+            qrEvent: "",
+        };
     },
     methods: {
         showPopupScanQr() {
@@ -23,7 +29,8 @@ export default {
     mounted() {
         this.tg.MainButton.hide();
         this.tg.onEvent("qrTextReceived", (event) => {
-            // this.tg.closeScanQrPopup();
+            this.tg.closeScanQrPopup();
+            this.qrEvent = event;
         });
     },
 };
