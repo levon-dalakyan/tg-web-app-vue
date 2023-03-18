@@ -8,19 +8,11 @@
 <script>
 import Button from "./components/Button.vue";
 
-const tg = window.Telegram.WebApp;
-const isVisibleMainBtn = tg.MainButton.isVisible;
-
-tg.MainButton.setParams({
-    text: "Sign In",
-});
-tg.MainButton.show();
-
 export default {
     components: { Button },
     data() {
         return {
-            isVisibleMainBtn: isVisibleMainBtn,
+            isVisibleMainBtn: tg.MainButton.isVisible,
         };
     },
     methods: {
@@ -35,21 +27,15 @@ export default {
             }
         },
     },
-    watch: {
-        isVisibleMainBtn(val) {
-            // if (val) {
-            //     this.tg?.MainButton.hide();
-            // } else {
-            //     this.tg?.MainButton.show();
-            // }
-        },
-    },
+    watch: {},
     created() {
         console.log(tg);
     },
     mounted() {
         tg.ready();
-        tg.MainButton.hide();
+        tg.MainButton.setParams({
+            text: "Sign In",
+        });
     },
 };
 </script>
