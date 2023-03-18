@@ -11,16 +11,14 @@ import Button from "./components/Button.vue";
 export default {
     components: { Button },
     data() {
-        return {
-            isVisibleMainBtn: this.tg.MainButton.isVisible,
-        };
+        return {};
     },
     methods: {
         onClose() {
             this.tg.close();
         },
         onToggle() {
-            if (this.isVisibleMainBtn) {
+            if (this.tg.MainButton.isVisible) {
                 this.tg.MainButton.hide();
             } else {
                 this.tg.MainButton.show();
