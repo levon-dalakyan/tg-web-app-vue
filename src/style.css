@@ -1,4 +1,31 @@
+@font-face {
+    font-family: "SF UI Display";
+    src: url("assets/fonts/SFUIDisplay-Light.ttf");
+    font-weight: 300;
+}
+@font-face {
+    font-family: "SF UI Display";
+    src: url("assets/fonts/SFUIDisplay-Regular.ttf");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "SF UI Display";
+    src: url("assets/fonts/SFUIDisplay-Medium.ttf");
+    font-weight: 500;
+}
+@font-face {
+    font-family: "SF UI Display";
+    src: url("assets/fonts/SFUIDisplay-Semibold.ttf");
+    font-weight: 600;
+}
+@font-face {
+    font-family: "SF UI Display";
+    src: url("assets/fonts/SFUIDisplay-Bold.ttf");
+    font-weight: 700;
+}
+
 body {
     background: var(--tg-theme-bg-color);
     color: var(--tg-theme-text-color);
+    font-family: "SF UI Display";
 }
