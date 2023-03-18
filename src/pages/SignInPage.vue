@@ -23,8 +23,7 @@ export default {
     mounted() {
         this.tg.MainButton.hide();
         this.tg.onEvent("qrTextReceived", (event) => {
-            console.log(event);
-            this.tg.closeScanQrPopup();
+            // this.tg.closeScanQrPopup();
         });
     },
 };
