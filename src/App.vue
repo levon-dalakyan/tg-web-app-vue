@@ -42,9 +42,9 @@ export default {
     },
     mounted() {
         this.tg?.ready();
-        this.tg?.MainButton.setParams({
-            text: "Sign In",
-        });
+        // this.tg?.MainButton.setParams({
+        //     text: "Sign In",
+        // });
         this.tg?.MainButton.show();
     },
 };
