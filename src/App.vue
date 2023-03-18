@@ -8,44 +8,45 @@
 <script>
 import Button from "./components/Button.vue";
 
+const tg = window.Telegram.WebApp;
+const isVisibleMainBtn = tg.MainButton.isVisible;
+
+tg.MainButton.setParams({
+    text: "Sign In",
+});
+tg.MainButton.show();
+
 export default {
     components: { Button },
     data() {
-        return {
-            tg: window.Telegram.WebApp,
-            isVisibleMainBtn: this.tg?.MainButton.isVisible,
-        };
+        return {};
     },
     methods: {
         onClose() {
             this.tg?.close();
         },
         onToggle() {
-            if (this.isVisibleMainBtn) {
-                this.tg?.MainButton.hide();
+            if (isVisibleMainBtn) {
+                tg.MainButton.hide();
             } else {
-                this.tg?.MainButton.show();
+                tg.MainButton.show();
             }
         },
     },
     watch: {
         isVisibleMainBtn(val) {
-            if (val) {
-                this.tg?.MainButton.hide();
-            } else {
-                this.tg?.MainButton.show();
-            }
+            // if (val) {
+            //     this.tg?.MainButton.hide();
+            // } else {
+            //     this.tg?.MainButton.show();
+            // }
         },
     },
     created() {
         console.log(this.tg);
     },
     mounted() {
-        this.tg?.ready();
-        // this.tg?.MainButton.setParams({
-        //     text: "Sign In",
-        // });
-        this.tg?.MainButton.show();
+        tg.ready();
     },
 };
 </script>
