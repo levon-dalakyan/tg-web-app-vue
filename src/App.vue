@@ -47,6 +47,7 @@ export default {
     },
     mounted() {
         tg.ready();
+        tg.MainButton.hide();
     },
 };
 </script>
