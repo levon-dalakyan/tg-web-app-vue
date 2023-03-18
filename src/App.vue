@@ -19,14 +19,16 @@ tg.MainButton.show();
 export default {
     components: { Button },
     data() {
-        return {};
+        return {
+            isVisibleMainBtn: isVisibleMainBtn,
+        };
     },
     methods: {
         onClose() {
             tg.close();
         },
         onToggle() {
-            if (isVisibleMainBtn) {
+            if (this.isVisibleMainBtn) {
                 tg.MainButton.hide();
             } else {
                 tg.MainButton.show();
